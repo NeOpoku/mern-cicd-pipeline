@@ -1,4 +1,4 @@
-import Quesiton from '../models/Question.ts';
+import Quesiton from '../models/Question';
 import db from '../config/connection.js';
 
 export default async (modelName: "Question", collectionName: string) => {
@@ -14,3 +14,6 @@ export default async (modelName: "Question", collectionName: string) => {
     throw err;
   }
 }
+
+
+//This is not used
