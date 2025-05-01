@@ -1,10 +1,10 @@
-import models from '../models/index.js';
+import Quesiton from '../models/Question.ts';
 import db from '../config/connection.js';
 
 export default async (modelName: "Question", collectionName: string) => {
   try {
-    let modelExists = await models[modelName].db.db.listCollections({
-      name: collectionName
+    let modelExists = await Quesiton.db.db.listCollections({
+     
     }).toArray()
 
     if (modelExists.length) {
