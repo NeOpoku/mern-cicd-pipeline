@@ -1,14 +1,24 @@
-import db from "../config/connection.js";
-import Question from "../models/Question.js";
-//import cleanDB from "./cleanDb.js";
+import mongoose from '../config/connection';
+import Question from '../models/Question';
+import pythonQuestions from './pythonQuestions.json' assert { type: 'json' };
 
-import pythonQuestions from './pythonQuestions.json' assert { type: "json" };
+(async () => {
+  try {
+    await mongoose.connection.once('open', async () => {
+      console.log('Database connected!');
 
-db.once('open', async () => {
- //await cleanDB('Question', 'questions');
+      // Optional: Clean existing data (optional, based on need)
+      await Question.deleteMany({});
+      console.log('Old questions removed.');
 
-  await Question.insertMany(pythonQuestions);
+      // Seed new data
+      await Question.insertMany(pythonQuestions);
+      console.log('New questions seeded.');
 
-  console.log('Questions seeded!');
-  process.exit(0);
-});
+      process.exit(0);
+    });
+  } catch (err) {
+    console.error('Seeding error:', err);
+    process.exit(1);
+  }
+})();

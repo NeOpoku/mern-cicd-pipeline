@@ -1,19 +1,16 @@
-import Quesiton from '../models/Question';
-import db from '../config/connection.js';
+import mongoose from '../config/connection';
+// Removed unused import for 'Question'
 
-export default async (modelName: "Question", collectionName: string) => {
+export default async (_modelName: string = 'Question', collectionName: string) => {
   try {
-    let modelExists = await Quesiton.db.db.listCollections({
-     
-    }).toArray()
+    const collections = await mongoose.connection.db
+      .listCollections({ name: collectionName })
+      .toArray();
 
-    if (modelExists.length) {
-      await db.dropCollection(collectionName);
+    if (collections.length > 0) {
+      await mongoose.connection.db.dropCollection(collectionName);
     }
   } catch (err) {
     throw err;
   }
-}
-
-
-//This is not used
+};
