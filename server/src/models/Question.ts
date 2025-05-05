@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 
-interface IAnswer extends Document {
+interface IAnswer {
   text: string;
   isCorrect: boolean;
 }
@@ -15,11 +15,11 @@ const QuestionSchema = new Schema<IQuestion>({
   answers: [
     {
       text: { type: String, required: true },
-      isCorrect: { type: Boolean, required: true }
-    }
-  ]
+      isCorrect: { type: Boolean, required: true },
+    },
+  ],
 });
 
 const Question = model<IQuestion>('Question', QuestionSchema);
-export { IQuestion, QuestionSchema };
+
 export default Question;
