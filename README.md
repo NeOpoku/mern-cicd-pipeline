@@ -17,7 +17,7 @@ The project implements:
 
 ## 🚀 Live Demo
 
-[View Live Demo](#) <!-- Replace with your Render URL when deployed -->
+[View Live Demo](#)
 
 ## 🔧 Setup Instructions
 
