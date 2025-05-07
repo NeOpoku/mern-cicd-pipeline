@@ -1,4 +1,4 @@
-import mongoose from '../config/connection';
+// Removed unused import for 'mongoose'
 import  Question  from '../models/Question.js'; // Importing Question model for type safety
 // Removed unused import for 'Question'
 
